@@ -1,9 +1,12 @@
 package com.spark
 
+import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 
 object Main {
   def main(args: Array[String]): Unit = {
+    Logger.getLogger("org").setLevel(Level.OFF);
+    System.setProperty("spark.ui.showConsoleProgress", "false");
     val inputFile = "C:/Users/Kailin/Downloads/word.txt"
     val conf = new SparkConf().setAppName("WordCount").setMaster("local")
     val sc = new SparkContext(conf)
